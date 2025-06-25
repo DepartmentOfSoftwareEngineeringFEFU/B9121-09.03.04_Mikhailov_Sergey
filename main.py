@@ -245,7 +245,7 @@ class ClientWindow:
         self.main_root = main_root
         self.root = tk.Toplevel(main_root)
         self.root.title("Анализатор передачи данных: Клиент")
-        self.root.geometry("1000x700")
+        self.root.geometry("800x600")
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
         self.root.configure(bg='black', )
 
@@ -255,7 +255,7 @@ class ClientWindow:
             "Memory Mapped File": MemoryMappedFile.MMFClient
         }
         self.selected_method = tk.StringVar(value="Socket")
-        self.selected_file = tk.StringVar(value=r"C:\Users\Serzm7988\Desktop\Diplom 1\Зима 2016\Залив Петра Великого\15.01.2016.csv")
+        self.selected_file = tk.StringVar()
         self.client = None
         self.send_thread = None
 
