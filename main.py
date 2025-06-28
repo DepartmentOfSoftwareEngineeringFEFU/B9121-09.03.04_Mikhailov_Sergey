@@ -22,35 +22,35 @@ class MainWindow:
         self.root = root
         self.root.title("Анализатор передачи данных")
         self.root.geometry("400x300")
-        self.root.configure(bg='black', )
+        self.root.configure(bg='white', )
 
         tk.Label(self.root, text="Выберите режим", font=(
-            "Lucida Console", 14), fg="green", bg="black").pack(pady=20)
+            "Lucida Console", 14), fg="black", bg="white").pack(pady=20)
 
         tk.Button(self.root,
                   text="Клиент",
                   command=self.open_client_window,
                   width=20,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove",
                   font=("Lucida Console", 12)).pack(pady=10)
         tk.Button(self.root,
                   text="Сервер",
                   command=self.open_server_window,
                   width=20,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   font=("Lucida Console", 12)).pack(pady=10)
         tk.Button(self.root,
                   text="Выход",
                   command=self.root.destroy,
                   width=20,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   font=("Lucida Console", 12)).pack(pady=10)
 
         root.mainloop()
@@ -73,7 +73,7 @@ class ServerWindow:
         self.root.title("Анализатор передачи данных: Сервер")
         self.root.geometry("800x600")
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
-        self.root.configure(bg='black', )
+        self.root.configure(bg='white', )
 
         self.transmission_methods = {
             "Socket": Socket.SocketServer,
@@ -89,39 +89,39 @@ class ServerWindow:
             "start_time": None
         }
 
-        tk.Label(self.root, text="IP адрес", fg="green", bg="black").place(
+        tk.Label(self.root, text="IP адрес", fg="black", bg="white").place(
             relheight=0.05, relwidth=0.3, relx=0.05, rely=0.03)
         self.host = tk.Entry(self.root,
                              textvariable=tk.StringVar(value=str(HOST)),
                              width=30,
                              state="readonly",
-                             fg="green",
-                             bg="black",
-                             readonlybackground="black")
+                             fg="black",
+                             bg="white",
+                             readonlybackground="white")
         self.host.place(relheight=0.05, relwidth=0.3, relx=0.05, rely=0.10)
-        tk.Label(self.root, text="Порт:", fg="green", bg="black").place(
+        tk.Label(self.root, text="Порт:", fg="black", bg="white").place(
             relheight=0.05, relwidth=0.3, relx=0.05, rely=0.17)
         self.port = tk.Entry(self.root, textvariable=tk.StringVar(
-            value=str(PORT)), width=10,  fg="green", bg="black")
+            value=str(PORT)), width=10,  fg="black", bg="white")
         self.port.place(relheight=0.05, relwidth=0.3, relx=0.05, rely=0.24)
 
         tk.Label(self.root,
                  text="Вид межпроцессного взаимодействия:",
-                 fg="green",
-                 bg="black").place(relheight=0.05,
+                 fg="black",
+                 bg="white").place(relheight=0.05,
                                    relwidth=0.3,
                                    relx=0.05,
                                    rely=0.31)
         option_menu = tk.OptionMenu(
             self.root, self.selected_method, *self.transmission_methods.keys())
-        option_menu.config(fg="green", bg="black", activebackground="green")
+        option_menu.config(fg="black", bg="white", activebackground="gray")
         option_menu.place(relheight=0.05, relwidth=0.3, relx=0.05, rely=0.38)
 
         tk.Button(self.root,
                   text="Запустить Сервер",
                   command=self.server_thread_start,
-                  fg="green", bg="black",
-                  activebackground="green",
+                  fg="black", bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
@@ -129,8 +129,8 @@ class ServerWindow:
         tk.Button(self.root,
                   text="Остановить Сервер",
                   command=self.stop_server,
-                  fg="green", bg="black",
-                  activebackground="green",
+                  fg="black", bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
@@ -138,26 +138,26 @@ class ServerWindow:
         tk.Button(self.root,
                   text="Отобразить полученные данные",
                   command=self.open_data_window,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.5,
                                              relx=0.425,
                                              rely=0.92)
         tk.Button(self.root, text="Назад",
                   command=self.on_close,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
                                              rely=0.92)
 
-        tk.Label(self.root, text="Вывод:", fg="green", bg="black").place(
+        tk.Label(self.root, text="Вывод:", fg="black", bg="white").place(
             relheight=0.05, relwidth=0.55, relx=0.4, rely=0.03)
-        self.status_text = tk.Text(self.root, fg="green", bg="black")
+        self.status_text = tk.Text(self.root, fg="black", bg="white")
         self.status_text.place(
             relheight=0.8, relwidth=0.55, relx=0.4, rely=0.08)
 
@@ -211,19 +211,19 @@ class DataWindow():
         self.root.title("Анализатор передачи данных: Полученные данные")
         self.root.geometry("800x600")
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
-        self.root.configure(bg='black', )
+        self.root.configure(bg='white', )
 
         self.data = data
         self.table = pt = Table(self.root,
                                 dataframe=data['body'],
                                 showtoolbar=True,
                                 showstatusbar=True,
-                                fg="green",
-                                bg="black",
-                                activebg="green",
+                                fg="black",
+                                bg="white",
+                                activebg="black",
                                 overrelief="groove",)
         pt.show()
-        options = {'colheadercolor': 'green', 'floatprecision': 5}
+        options = {'colheadercolor': 'black', 'floatprecision': 5}
         config.apply_options(options, pt)
         pt.show()
 
@@ -247,7 +247,7 @@ class ClientWindow:
         self.root.title("Анализатор передачи данных: Клиент")
         self.root.geometry("800x600")
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
-        self.root.configure(bg='black', )
+        self.root.configure(bg='white', )
 
         self.transmission_methods = {
             "Socket": Socket.SocketClient,
@@ -259,33 +259,33 @@ class ClientWindow:
         self.client = None
         self.send_thread = None
 
-        tk.Label(self.root, text="IP адрес", fg="green", bg="black").place(
+        tk.Label(self.root, text="IP адрес", fg="black", bg="white").place(
             relheight=0.05, relwidth=0.3, relx=0.05, rely=0.03)
         self.host = tk.Entry(self.root, textvariable=tk.StringVar(
-            value=str(HOST)), width=30, fg="green", bg="black")
+            value=str(HOST)), width=30, fg="black", bg="white")
         self.host.place(relheight=0.05, relwidth=0.3, relx=0.05, rely=0.10)
-        tk.Label(self.root, text="Порт:", fg="green", bg="black").place(
+        tk.Label(self.root, text="Порт:", fg="black", bg="white").place(
             relheight=0.05, relwidth=0.3, relx=0.05, rely=0.17)
         self.port = tk.Entry(self.root, textvariable=tk.StringVar(
-            value=str(PORT)), width=10,  fg="green", bg="black")
+            value=str(PORT)), width=10,  fg="black", bg="white")
         self.port.place(relheight=0.05, relwidth=0.3, relx=0.05, rely=0.24)
 
         tk.Label(self.root,
                  text="Вид межпроцессного взаимодействия:",
-                 fg="green",
-                 bg="black").place(relheight=0.05,
+                 fg="black",
+                 bg="white").place(relheight=0.05,
                                    relwidth=0.3,
                                    relx=0.05,
                                    rely=0.31)
         option_menu = tk.OptionMenu(
             self.root, self.selected_method, *self.transmission_methods.keys())
-        option_menu.config(fg="green", bg="black", activebackground="green")
+        option_menu.config(fg="black", bg="white", activebackground="gray")
         option_menu.place(relheight=0.05, relwidth=0.3, relx=0.05, rely=0.38)
 
         tk.Label(self.root,
                  text="Выбранный файл:",
-                 fg="green",
-                 bg="black").place(relheight=0.05,
+                 fg="black",
+                 bg="white").place(relheight=0.05,
                                    relwidth=0.3,
                                    relx=0.05,
                                    rely=0.45)
@@ -293,18 +293,18 @@ class ClientWindow:
                  textvariable=self.selected_file,
                  width=50,
                  state='readonly',
-                 fg="green",
-                 bg="black",
-                 readonlybackground="black").place(relheight=0.05,
+                 fg="black",
+                 bg="white",
+                 readonlybackground="white").place(relheight=0.05,
                                                    relwidth=0.3,
                                                    relx=0.05,
                                                    rely=0.52)
         self.browse_button = tk.Button(self.root,
                                        text="Выбрать файл:",
                                        command=self.browse_file,
-                                       fg="green",
-                                       bg="black",
-                                       activebackground="green",
+                                       fg="black",
+                                       bg="white",
+                                       activebackground="gray",
                                        overrelief="groove")
         self.browse_button.place(
             relheight=0.05, relwidth=0.3, relx=0.05, rely=0.59)
@@ -312,44 +312,44 @@ class ClientWindow:
         tk.Button(self.root,
                   text="Запустить клиент",
                   command=self.start_client,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
                                              rely=0.66)
         tk.Button(self.root, text="Отправить",
                   command=self.start_send_thread,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
                                              rely=0.73)
         tk.Button(self.root, text="Отключиться",
                   command=self.stop_client,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
                                              rely=0.80)
         tk.Button(self.root, text="Назад",
                   command=self.on_close,
-                  fg="green",
-                  bg="black",
-                  activebackground="green",
+                  fg="black",
+                  bg="white",
+                  activebackground="gray",
                   overrelief="groove").place(relheight=0.05,
                                              relwidth=0.3,
                                              relx=0.05,
                                              rely=0.92)
 
-        tk.Label(self.root, text="Вывод:", fg="green", bg="black").place(
+        tk.Label(self.root, text="Вывод:", fg="black", bg="white").place(
             relheight=0.05, relwidth=0.55, relx=0.4, rely=0.03)
-        self.status_text = tk.Text(self.root, fg="green", bg="black")
+        self.status_text = tk.Text(self.root, fg="black", bg="white")
         self.status_text.place(
             relheight=0.8, relwidth=0.55, relx=0.4, rely=0.08)
 
